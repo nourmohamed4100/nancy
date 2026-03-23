@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nancy ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffdae0; /* لون بينك سادة ورقيق */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            overflow: hidden;
+        }
+
+        .main-wrapper {
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #mainImage {
+            width: 90%;
+            max-width: 550px; /* تكبير الـ GIF */
+            border-radius: 30px;
+            margin-bottom: 20px;
+            /* إزالة أي إطارات أو حدود */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 26px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(255,255,255,0.5);
+            height: 40px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* مسافة بين الزرارين في البداية */
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        #no {
+            background-color: #999;
+            color: white;
+            /* البداية تكون عادية جنب الزرار التاني */
+            position: relative; 
+            z-index: 100;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+            color: #ff4d6d;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+
+    <div class="main-wrapper">
+        <img id="mainImage" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamF2NHFocGdybGM1ZmNxa2J1c295bWw2ZXcyanFoajdvcjJ6Z2piYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ie4CIIvQS0bk3zwZlM/giphy.gif">
+        
+        <h1 id="mainText"></h1>
+
+        <div class="btn-container">
+            <button id="yes" onclick="yesClicked()">اه بحبك يا نور ❤️</button>
+            <button id="no" onmouseover="escape()" onclick="escape()">لا 😢</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("no");
+        const mainText = document.getElementById("mainText");
+        const message = "هل هتردي عليا بمناسبه اليوم الجميل ده؟";
+        let i = 0;
+
+        // كتابة النص
+        function typeWriter() {
+            if (i < message.length) {
+                mainText.innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80);
+            }
+        }
+        window.onload = typeWriter;
+
+        // وظيفة الهروب
+        function escape() {
+            // تحويل الزرار لـ fixed فقط عند أول محاولة لمس
+            if (noBtn.style.position !== 'fixed') {
+                noBtn.style.position = 'fixed';
+            }
+
+            const padding = 50;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        function yesClicked() {
+            document.getElementById("mainImage").src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN20yMnhhOW51cDBrdnJ6aWlwODhyaHRtYmtkMXZ5Znp2cDlpZzZnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif";
+            mainText.innerHTML = "🎉 HAPPY BIRTHDAY NANCY 🎂❤️";
+            
+            const music = document.getElementById("bgMusic");
+            music.volume = 0.2; // صوت هادي
+            music.play().catch(() => {});
+
+            setInterval(createHeart, 300);
+
+            // إخفاء الأزرار تماماً بعد الموافقة
+            document.getElementById("yes").style.display = "none";
+            noBtn.style.display = "none";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
