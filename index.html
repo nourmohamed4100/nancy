@@ -1,171 +1,251 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Nancy ❤️</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #ffdae0; /* لون بينك سادة ورقيق */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nancy ❤️</title>
 
-        .main-wrapper {
-            text-align: center;
-            z-index: 10;
-            width: 100%;
-            max-width: 800px;
-        }
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffdae0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+    overflow: hidden;
+}
 
-        #mainImage {
-            width: 90%;
-            max-width: 550px; /* تكبير الـ GIF */
-            border-radius: 30px;
-            margin-bottom: 20px;
-            /* إزالة أي إطارات أو حدود */
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.main-wrapper {
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+}
 
-        h1 {
-            color: #d63384;
-            font-size: 26px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 5px rgba(255,255,255,0.5);
-            height: 40px;
-        }
+#mainImage {
+    width: 90%;
+    max-width: 550px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* مسافة بين الزرارين في البداية */
-            position: relative;
-            min-height: 60px;
-        }
+h1 {
+    color: #d63384;
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(255,255,255,0.5);
+    height: 40px;
+}
 
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.3s;
-            white-space: nowrap;
-        }
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    min-height: 60px;
+}
 
-        #yes {
-            background-color: #ff4d6d;
-            color: white;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-        }
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        #no {
-            background-color: #999;
-            color: white;
-            /* البداية تكون عادية جنب الزرار التاني */
-            position: relative; 
-            z-index: 100;
-        }
+#yes {
+    background-color: #ff4d6d;
+    color: white;
+}
 
-        .heart {
-            position: fixed;
-            bottom: -10px;
-            font-size: 20px;
-            animation: floatUp 5s linear infinite;
-            color: #ff4d6d;
-            z-index: 1;
-            opacity: 0.8;
-        }
+#no {
+    background-color: #999;
+    color: white;
+    position: relative;
+    z-index: 100;
+}
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-110vh) rotate(360deg); }
-        }
-    </style>
+/* القلوب */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+    color: #ff4d6d;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-110vh); }
+}
+
+/* الصور الطايرة */
+.floating-img {
+    position: fixed;
+    bottom: -120px;
+    width: 120px; /* أكبر */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20px;
+    animation: floatImg 10s linear; /* أبطأ */
+    z-index: 1;
+    opacity: 0.95;
+}
+
+@keyframes floatImg {
+    0% { transform: translateY(0) scale(0.9); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-130vh) scale(1.1); opacity: 0; }
+}
+
+/* الصور المهمة */
+.special-images {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 20;
+}
+
+.special-images img {
+    width: 140px; /* أكبر */
+    height: 140px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+</style>
 </head>
+
 <body>
 
-    <audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-    <div class="main-wrapper">
-        <img id="mainImage" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamF2NHFocGdybGM1ZmNxa2J1c295bWw2ZXcyanFoajdvcjJ6Z2piYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ie4CIIvQS0bk3zwZlM/giphy.gif">
-        
-        <h1 id="mainText"></h1>
+<div class="main-wrapper">
+    <img id="mainImage" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamF2NHFocGdybGM1ZmNxa2J1c295bWw2ZXcyanFoajdvcjJ6Z2piYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ie4CIIvQS0bk3zwZlM/giphy.gif">
+    
+    <h1 id="mainText"></h1>
 
-        <div class="btn-container">
-            <button id="yes" onclick="yesClicked()">اه بحبك يا نور ❤️</button>
-            <button id="no" onmouseover="escape()" onclick="escape()">لا 😢</button>
-        </div>
+    <div class="btn-container">
+        <button id="yes" onclick="yesClicked()">اه بحبك يا نور ❤️</button>
+        <button id="no" onmouseover="escape()" onclick="escape()">لا 😢</button>
     </div>
+</div>
 
-    <script>
-        const noBtn = document.getElementById("no");
-        const mainText = document.getElementById("mainText");
-        const message = "هل هتردي عليا بمناسبه اليوم الجميل ده؟";
-        let i = 0;
+<script>
+const noBtn = document.getElementById("no");
+const mainText = document.getElementById("mainText");
 
-        // كتابة النص
-        function typeWriter() {
-            if (i < message.length) {
-                mainText.innerHTML += message.charAt(i);
-                i++;
-                setTimeout(typeWriter, 80);
-            }
-        }
-        window.onload = typeWriter;
+const message = "هل هتردي عليا بمناسبه اليوم الجميل ده؟";
+let i = 0;
 
-        // وظيفة الهروب
-        function escape() {
-            // تحويل الزرار لـ fixed فقط عند أول محاولة لمس
-            if (noBtn.style.position !== 'fixed') {
-                noBtn.style.position = 'fixed';
-            }
+function typeWriter() {
+    if (i < message.length) {
+        mainText.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 80);
+    }
+}
+window.onload = typeWriter;
 
-            const padding = 50;
-            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+// زر بيهرب
+function escape() {
+    if (noBtn.style.position !== 'fixed') {
+        noBtn.style.position = 'fixed';
+    }
 
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+    const padding = 50;
+    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-            noBtn.style.left = randomX + "px";
-            noBtn.style.top = randomY + "px";
-        }
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+}
 
-        function yesClicked() {
-            document.getElementById("mainImage").src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN20yMnhhOW51cDBrdnJ6aWlwODhyaHRtYmtkMXZ5Znp2cDlpZzZnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif";
-            mainText.innerHTML = "🎉  كل سنه وانت طيب يا جميل و عقبال مليون سنه و ان شاء الله تحقق كل احلامك السنه دي 🎂❤️";
-            
-            const music = document.getElementById("bgMusic");
-            music.volume = 0.2; // صوت هادي
-            music.play().catch(() => {});
+// صورك (1 → 30)
+const images = [
+"images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg",
+"images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg",
+"images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg",
+"images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg",
+"images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg",
+"images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"
+];
 
-            setInterval(createHeart, 300);
+// صور طايرة
+function createFloatingImage() {
+    const img = document.createElement("img");
+    img.className = "floating-img";
 
-            // إخفاء الأزرار تماماً بعد الموافقة
-            document.getElementById("yes").style.display = "none";
-            noBtn.style.display = "none";
-        }
+    const randomImg = images[Math.floor(Math.random() * images.length)];
+    img.src = randomImg;
 
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-    </script>
+    img.style.left = Math.random() * 100 + "vw";
+
+    document.body.appendChild(img);
+
+    setTimeout(() => img.remove(), 10000);
+}
+
+// الصور المهمة
+function showSpecialImages() {
+    const container = document.createElement("div");
+    container.className = "special-images";
+
+    const imgs = ["images/main1.jpg","images/main2.jpg","images/main3.jpg"];
+
+    imgs.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        container.appendChild(img);
+    });
+
+    document.body.appendChild(container);
+}
+
+// القلوب
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+
+// لما تدوس YES
+function yesClicked() {
+    document.getElementById("mainImage").src =
+    "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN20yMnhhOW51cDBrdnJ6aWlwODhyaHRtYmtkMXZ5Znp2cDlpZzZnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif";
+
+    mainText.innerHTML =
+    "🎉 كل سنه وانت طيب يا جميل ❤️";
+
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.3;
+    music.play().catch(() => {});
+
+    setInterval(createHeart, 300);
+    setInterval(createFloatingImage, 700); // أبطأ
+
+    showSpecialImages();
+
+    document.getElementById("yes").style.display = "none";
+    noBtn.style.display = "none";
+}
+</script>
+
 </body>
 </html>
